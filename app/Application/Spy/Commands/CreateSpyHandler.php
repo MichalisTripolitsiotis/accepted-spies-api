@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Spy\Handlers;
+namespace App\Application\Spy\Commands;
 
-use App\Application\Spy\Commands\CreateSpyCommand;
 use App\Domain\Common\Events\DomainEventDispatcher;
-use App\Domain\Spy\Repositories\SpyRepositoryInterface;
 use App\Domain\Spy\Entities\Spy;
 use App\Domain\Spy\Events\SpyCreated;
+use App\Domain\Spy\Repositories\SpyRepositoryInterface;
 
 class CreateSpyHandler
 {

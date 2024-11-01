@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\UI\Http\Controllers\Api\V1\Auth;
 
-use App\Application\Auth\Actions\LoginAction;
-use App\Application\Auth\Actions\LogoutAction;
+use App\Application\Auth\Commands\LoginCommand;
+use App\Application\Auth\Commands\LogoutCommand;
 use App\Domain\Auth\Repositories\UserRepositoryInterface;
 use App\Domain\Auth\ValueObjects\UserEmail;
+use App\Domain\Common\Contracts\BusInterface;
 use App\Infrastructure\Laravel\Controller;
 use App\UI\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\JsonResponse;
@@ -16,14 +17,15 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function __construct(
-        private LoginAction $loginAction,
-        private LogoutAction $logoutAction,
+        private BusInterface $bus,
         private UserRepositoryInterface $userRepository
     ) {}
 
     public function login(LoginRequest $request): JsonResponse
     {
-        $token = $this->loginAction->execute($request->payload());
+        $command = new LoginCommand($request->payload());
+
+        $token = $this->bus->dispatch($command);
 
         return response()->json(['auth_token' => $token]);
     }
@@ -43,7 +45,8 @@ class AuthController extends Controller
             return response()->json(['message' => 'User not found'], 404);
         }
 
-        $this->logoutAction->execute($user);
+        $command = new LogoutCommand($user);
+        $this->bus->dispatch($command);
 
         return response()->json(['message' => 'Logged out successfully']);
     }

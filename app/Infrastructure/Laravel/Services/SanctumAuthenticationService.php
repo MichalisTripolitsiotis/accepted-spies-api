@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Laravel\Services;
 
+use App\Domain\Auth\Entities\User;
 use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
 use App\Domain\Auth\Repositories\UserRepositoryInterface;
-use App\Domain\Auth\Entities\User;
 use App\Domain\Auth\ValueObjects\UserEmail;
 use App\Domain\Auth\ValueObjects\UserPassword;
 use App\Infrastructure\Laravel\Models\UserModel;

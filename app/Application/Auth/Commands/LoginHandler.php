@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Auth\Handlers;
+namespace App\Application\Auth\Commands;
 
-use App\Application\Auth\Commands\LoginCommand;
 use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
 use App\Domain\Auth\ValueObjects\UserEmail;
 use App\Domain\Auth\ValueObjects\UserPassword;

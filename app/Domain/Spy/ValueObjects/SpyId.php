@@ -17,13 +17,12 @@ final class SpyId
     }
 
     /**
-     * @param int $id
      * @throws InvalidArgumentException
      */
     private function validate(int $id): void
     {
-        if (!filter_var($id, FILTER_VALIDATE_INT)) {
-            throw new InvalidArgumentException("Invalid user id.");
+        if (! filter_var($id, FILTER_VALIDATE_INT)) {
+            throw new InvalidArgumentException('Invalid user id.');
         }
     }
 

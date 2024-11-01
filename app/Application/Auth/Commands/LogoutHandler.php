@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Auth\Handlers;
+namespace App\Application\Auth\Commands;
 
-use App\Application\Auth\Commands\LogoutCommand;
 use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
 
 class LogoutHandler

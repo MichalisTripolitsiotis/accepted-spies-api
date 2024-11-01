@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\UI\Http\Controllers;
 
-use App\Domain\Auth\Entities\User;
 use App\Infrastructure\Laravel\Models\UserModel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -28,7 +27,7 @@ class AuthControllerTest extends TestCase
 
     public function testLoginSuccessfullyReturnsToken()
     {
-        $response = $this->postJson(self::API_BASE . 'auth/login', [
+        $response = $this->postJson(self::API_BASE.'auth/login', [
             'email' => $this->user->email,
             'password' => 'password',
         ]);
@@ -39,7 +38,7 @@ class AuthControllerTest extends TestCase
 
     public function testLoginFailsWithInvalidCredentials()
     {
-        $response = $this->postJson(self::API_BASE . 'auth/login', [
+        $response = $this->postJson(self::API_BASE.'auth/login', [
             'email' => $this->user->email,
             'password' => 'wrong_password',
         ]);
@@ -51,9 +50,9 @@ class AuthControllerTest extends TestCase
     public function testLogoutSuccessfullyRevokesToken()
     {
         $authToken = $this->user->createToken('authToken')->plainTextToken;
-        $this->withHeader('Authorization', 'Bearer ' . $authToken);
+        $this->withHeader('Authorization', 'Bearer '.$authToken);
 
-        $logoutResponse = $this->postJson(self::API_BASE . 'auth/logout');
+        $logoutResponse = $this->postJson(self::API_BASE.'auth/logout');
 
         $logoutResponse->assertStatus(200);
         $logoutResponse->assertJson(['message' => 'Logged out successfully']);

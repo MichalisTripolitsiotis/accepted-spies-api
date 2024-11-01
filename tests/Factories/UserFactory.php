@@ -8,8 +8,8 @@ use App\Domain\Auth\ValueObjects\UserEmailVerifiedDate;
 use App\Domain\Auth\ValueObjects\UserName;
 use App\Domain\Auth\ValueObjects\UserPassword;
 use App\Domain\Auth\ValueObjects\UserRememberToken;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserFactory
 {

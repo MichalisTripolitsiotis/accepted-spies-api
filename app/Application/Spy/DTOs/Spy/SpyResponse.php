@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Spy\DTOs;
+namespace App\Application\Spy\DTOs\Spy;
 
 use App\Domain\Spy\Entities\Spy;
 

@@ -26,6 +26,7 @@ class SpyModelFactory extends Factory
     public function definition(): array
     {
         $birthDate = fake()->date();
+
         return [
             'name' => fake()->firstName(),
             'surname' => fake()->lastName(),

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\UI\Http\Requests\Spy;
 
-use App\Application\Spy\DTOs\CreateSpyData;
+use App\Application\Spy\DTOs\Spy\CreateSpyData;
 use App\Domain\Spy\ValueObjects\SpyAgency;
 use App\Infrastructure\Laravel\Models\SpyModel;
 use Illuminate\Foundation\Http\FormRequest;
@@ -31,13 +31,13 @@ class CreateSpyRequest extends FormRequest
             'name' => [
                 'required',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'surname' => [
                 'required',
                 'string',
                 'max:255',
-                $this->uniqueNameSurnameRule()
+                $this->uniqueNameSurnameRule(),
             ],
             'agency' => [
                 'required',

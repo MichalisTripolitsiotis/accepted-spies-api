@@ -12,7 +12,7 @@ final class UserEmail
 
     /**
      * UserEmail constructor.
-     * @param string $email
+     *
      * @throws InvalidArgumentException
      */
     public function __construct(string $email)
@@ -22,12 +22,11 @@ final class UserEmail
     }
 
     /**
-     * @param string $email
      * @throws InvalidArgumentException
      */
     private function validate(string $email): void
     {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new InvalidArgumentException(
                 'Invalid email.'
             );

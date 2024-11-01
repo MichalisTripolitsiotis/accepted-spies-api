@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Laravel\Repositories;
 
-use App\Domain\Spy\Repositories\SpyRepositoryInterface;
+use App\Domain\Common\DTOs\Pagination\PaginatedResult;
 use App\Domain\Spy\Entities\Spy;
+use App\Domain\Spy\Repositories\SpyRepositoryInterface;
 use App\Domain\Spy\ValueObjects\SpyId;
 use App\Infrastructure\Laravel\Models\SpyModel;
 
@@ -27,5 +28,10 @@ class EloquentSpyRepository implements SpyRepositoryInterface
         } catch (\Exception $e) {
             throw $e;
         }
+    }
+
+    public function randomEntries(int $count): array
+    {
+        return SpyModel::inRandomOrder()->limit($count)->get()->toArray();
     }
 }

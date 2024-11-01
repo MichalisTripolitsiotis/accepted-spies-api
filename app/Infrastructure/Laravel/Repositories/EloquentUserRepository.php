@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Laravel\Repositories;
 
-use App\Domain\Auth\Repositories\UserRepositoryInterface;
 use App\Domain\Auth\Entities\User;
+use App\Domain\Auth\Repositories\UserRepositoryInterface;
 use App\Domain\Auth\ValueObjects\UserEmail;
 use App\Domain\Auth\ValueObjects\UserEmailVerifiedDate;
 use App\Domain\Auth\ValueObjects\UserName;
@@ -19,7 +19,7 @@ class EloquentUserRepository implements UserRepositoryInterface
     {
         $userModel = UserModel::where('email', $email->value())->first();
 
-        if (!$userModel) {
+        if (! $userModel) {
             return null;
         }
 

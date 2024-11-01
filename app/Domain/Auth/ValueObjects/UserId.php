@@ -17,19 +17,18 @@ final class UserId
     }
 
     /**
-     * @param int $id
      * @throws InvalidArgumentException
      */
     private function validate(int $id): void
     {
-        $options = array(
-            'options' => array(
+        $options = [
+            'options' => [
                 'min_range' => 1,
-            )
-        );
+            ],
+        ];
 
-        if (!filter_var($id, FILTER_VALIDATE_INT, $options)) {
-            throw new InvalidArgumentException("Invalid user id.");
+        if (! filter_var($id, FILTER_VALIDATE_INT, $options)) {
+            throw new InvalidArgumentException('Invalid user id.');
         }
     }
 

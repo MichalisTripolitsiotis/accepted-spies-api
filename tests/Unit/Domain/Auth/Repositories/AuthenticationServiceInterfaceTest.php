@@ -13,6 +13,7 @@ use Tests\TestCase;
 class AuthenticationServiceInterfaceTest extends TestCase
 {
     protected $authService;
+
     protected $user;
 
     protected function setUp(): void

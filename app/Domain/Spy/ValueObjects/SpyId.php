@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Auth\ValueObjects;
+namespace App\Domain\Spy\ValueObjects;
 
 use InvalidArgumentException;
 
-final class UserId
+final class SpyId
 {
     private $value;
 
@@ -22,13 +22,7 @@ final class UserId
      */
     private function validate(int $id): void
     {
-        $options = array(
-            'options' => array(
-                'min_range' => 1,
-            )
-        );
-
-        if (!filter_var($id, FILTER_VALIDATE_INT, $options)) {
+        if (!filter_var($id, FILTER_VALIDATE_INT)) {
             throw new InvalidArgumentException("Invalid user id.");
         }
     }

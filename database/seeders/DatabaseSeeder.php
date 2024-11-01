@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Infrastructure\Laravel\Models\SpyModel;
 use App\Infrastructure\Laravel\Models\UserModel;
 use Illuminate\Database\Seeder;
 
@@ -18,5 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        SpyModel::factory(5)->create();
     }
 }

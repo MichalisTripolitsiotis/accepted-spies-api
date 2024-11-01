@@ -12,25 +12,13 @@ use App\Domain\Auth\ValueObjects\UserRememberToken;
 
 final class User
 {
-    private $name;
-    private $email;
-    private $emailVerifiedDate;
-    private $password;
-    private $rememberToken;
-
     public function __construct(
-        UserName $name,
-        UserEmail $email,
-        UserEmailVerifiedDate $emailVerifiedDate,
-        UserPassword $password,
-        UserRememberToken $rememberToken
-    ) {
-        $this->name              = $name;
-        $this->email             = $email;
-        $this->emailVerifiedDate = $emailVerifiedDate;
-        $this->password          = $password;
-        $this->rememberToken     = $rememberToken;
-    }
+        private UserName $name,
+        private UserEmail $email,
+        private UserEmailVerifiedDate $emailVerifiedDate,
+        private UserPassword $password,
+        private UserRememberToken $rememberToken
+    ) {}
 
     public function name(): UserName
     {
@@ -64,8 +52,6 @@ final class User
         UserPassword $password,
         UserRememberToken $rememberToken
     ): User {
-        $user = new self($name, $email, $emailVerifiedDate, $password, $rememberToken);
-
-        return $user;
+        return new self($name, $email, $emailVerifiedDate, $password, $rememberToken);
     }
 }

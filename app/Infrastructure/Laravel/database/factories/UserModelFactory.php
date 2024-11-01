@@ -1,16 +1,24 @@
 <?php
 
-namespace Database\Factories;
+namespace App\Infrastructure\Laravel\Database\Factories;
 
+use App\Infrastructure\Laravel\Models\UserModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<UserModel>
  */
-class UserFactory extends Factory
+class UserModelFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = UserModel::class;
+
     /**
      * The current password being used by the factory.
      */

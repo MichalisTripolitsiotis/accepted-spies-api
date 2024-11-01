@@ -10,7 +10,6 @@ use App\Domain\Auth\ValueObjects\UserEmail;
 use App\Domain\Auth\ValueObjects\UserPassword;
 use Illuminate\Auth\AuthenticationException;
 
-
 class LoginHandler
 {
     public function __construct(private AuthenticationServiceInterface $service) {}

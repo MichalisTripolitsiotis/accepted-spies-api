@@ -7,9 +7,10 @@ namespace App\Application\Auth\Commands;
 use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
 use App\Domain\Auth\ValueObjects\UserEmail;
 use App\Domain\Auth\ValueObjects\UserPassword;
+use App\Domain\Common\Bus\CommandHandler;
 use Illuminate\Auth\AuthenticationException;
 
-class LoginHandler
+class LoginHandler extends CommandHandler
 {
     public function __construct(private AuthenticationServiceInterface $service) {}
 

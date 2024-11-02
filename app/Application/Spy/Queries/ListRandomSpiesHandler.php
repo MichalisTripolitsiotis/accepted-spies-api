@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Application\Spy\Queries;
 
+use App\Domain\Common\Bus\QueryHandler;
 use App\Domain\Spy\Repositories\SpyRepositoryInterface;
 
-class ListRandomSpiesHandler
+class ListRandomSpiesHandler extends QueryHandler
 {
     public function __construct(private SpyRepositoryInterface $repository) {}
 

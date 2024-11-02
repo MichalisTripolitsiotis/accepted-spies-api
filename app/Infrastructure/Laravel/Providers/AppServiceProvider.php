@@ -2,12 +2,22 @@
 
 namespace App\Infrastructure\Laravel\Providers;
 
+use App\Application\Auth\Commands\LoginCommand;
+use App\Application\Auth\Commands\LoginHandler;
+use App\Application\Auth\Commands\LogoutCommand;
+use App\Application\Auth\Commands\LogoutHandler;
+use App\Application\Spy\Commands\CreateSpyCommand;
+use App\Application\Spy\Commands\CreateSpyHandler;
+use App\Application\Spy\Queries\ListRandomSpiesHandler;
+use App\Application\Spy\Queries\ListRandomSpiesQuery;
 use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
 use App\Domain\Auth\Repositories\UserRepositoryInterface;
-use App\Domain\Common\Contracts\BusInterface;
+use App\Domain\Common\Bus\CommandBus;
+use App\Domain\Common\Bus\QueryBus;
 use App\Domain\Common\Events\DomainEventDispatcher;
 use App\Domain\Spy\Repositories\SpyRepositoryInterface;
-use App\Infrastructure\Bus\MessageBus;
+use App\Infrastructure\Laravel\Bus\IlluminateCommandBus;
+use App\Infrastructure\Laravel\Bus\IlluminateQueryBus;
 use App\Infrastructure\Laravel\Events\LaravelEventDispatcher;
 use App\Infrastructure\Laravel\Repositories\EloquentSpyRepository;
 use App\Infrastructure\Laravel\Repositories\EloquentUserRepository;
@@ -30,9 +40,8 @@ class AppServiceProvider extends ServiceProvider
             return new LaravelEventDispatcher($app->make(LaravelDispatcher::class));
         });
 
-        $this->app->singleton(BusInterface::class, function ($app) {
-            return new MessageBus;
-        });
+        $this->app->singleton(CommandBus::class, IlluminateCommandBus::class);
+        $this->app->singleton(QueryBus::class, IlluminateQueryBus::class);
     }
 
     /**
@@ -40,6 +49,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $commandBus = app(CommandBus::class);
+
+        $commandBus->register([
+            LoginCommand::class     => LoginHandler::class,
+            LogoutCommand::class    => LogoutHandler::class,
+            CreateSpyCommand::class => CreateSpyHandler::class,
+        ]);
+
+        $queryBus = app(QueryBus::class);
+
+        $queryBus->register([
+            ListRandomSpiesQuery::class => ListRandomSpiesHandler::class,
+        ]);
     }
 }

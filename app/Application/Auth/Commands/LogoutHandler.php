@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Application\Auth\Commands;
 
 use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
+use App\Domain\Common\Bus\CommandHandler;
 
-class LogoutHandler
+class LogoutHandler extends CommandHandler
 {
     public function __construct(private AuthenticationServiceInterface $service) {}
 

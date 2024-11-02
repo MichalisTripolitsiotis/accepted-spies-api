@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Application\Spy\Queries;
 
-class ListRandomSpiesQuery
+use App\Domain\Common\Bus\Query;
+
+class ListRandomSpiesQuery extends Query
 {
     public function __construct(private int $limit = 5) {}
 

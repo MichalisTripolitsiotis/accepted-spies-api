@@ -8,7 +8,7 @@ use App\Application\Auth\Commands\LoginCommand;
 use App\Application\Auth\Commands\LogoutCommand;
 use App\Domain\Auth\Repositories\UserRepositoryInterface;
 use App\Domain\Auth\ValueObjects\UserEmail;
-use App\Domain\Common\Contracts\BusInterface;
+use App\Domain\Common\Bus\CommandBus;
 use App\Infrastructure\Laravel\Controller;
 use App\UI\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\JsonResponse;
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function __construct(
-        private BusInterface $bus,
+        private CommandBus $bus,
         private UserRepositoryInterface $userRepository
     ) {}
 

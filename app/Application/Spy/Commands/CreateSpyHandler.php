@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Application\Spy\Commands;
 
+use App\Domain\Common\Bus\CommandHandler;
 use App\Domain\Common\Events\DomainEventDispatcher;
 use App\Domain\Spy\Entities\Spy;
 use App\Domain\Spy\Events\SpyCreated;
 use App\Domain\Spy\Repositories\SpyRepositoryInterface;
 
-class CreateSpyHandler
+class CreateSpyHandler extends CommandHandler
 {
     public function __construct(private SpyRepositoryInterface $repository, private DomainEventDispatcher $eventDispatcher) {}
 

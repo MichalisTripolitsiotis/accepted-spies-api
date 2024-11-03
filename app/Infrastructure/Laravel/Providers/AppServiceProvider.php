@@ -10,6 +10,8 @@ use App\Application\Spy\Commands\CreateSpyCommand;
 use App\Application\Spy\Commands\CreateSpyHandler;
 use App\Application\Spy\Queries\ListRandomSpiesHandler;
 use App\Application\Spy\Queries\ListRandomSpiesQuery;
+use App\Application\Spy\Queries\ListSpiesHandler;
+use App\Application\Spy\Queries\ListSpiesQuery;
 use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
 use App\Domain\Auth\Repositories\UserRepositoryInterface;
 use App\Domain\Common\Bus\CommandBus;
@@ -52,8 +54,8 @@ class AppServiceProvider extends ServiceProvider
         $commandBus = app(CommandBus::class);
 
         $commandBus->register([
-            LoginCommand::class     => LoginHandler::class,
-            LogoutCommand::class    => LogoutHandler::class,
+            LoginCommand::class => LoginHandler::class,
+            LogoutCommand::class => LogoutHandler::class,
             CreateSpyCommand::class => CreateSpyHandler::class,
         ]);
 
@@ -61,6 +63,7 @@ class AppServiceProvider extends ServiceProvider
 
         $queryBus->register([
             ListRandomSpiesQuery::class => ListRandomSpiesHandler::class,
+            ListSpiesQuery::class => ListSpiesHandler::class,
         ]);
     }
 }

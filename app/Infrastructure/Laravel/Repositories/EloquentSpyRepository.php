@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Laravel\Repositories;
 
-use App\Domain\Common\DTOs\Pagination\PaginatedResult;
 use App\Domain\Spy\Entities\Spy;
 use App\Domain\Spy\Repositories\SpyRepositoryInterface;
 use App\Domain\Spy\ValueObjects\SpyAgency;
@@ -51,5 +50,10 @@ class EloquentSpyRepository implements SpyRepositoryInterface
                 new SpyId($record->id),
             );
         })->all();
+    }
+
+    public function all(): mixed
+    {
+        return SpyModel::query();
     }
 }

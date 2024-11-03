@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Laravel\Events;
 
 use App\Domain\Common\Events\DomainEvent;

@@ -8,10 +8,12 @@ use App\Application\Spy\Commands\CreateSpyCommand;
 use App\Application\Spy\DTOs\SpyCollectionResponse;
 use App\Application\Spy\DTOs\SpyResponse;
 use App\Application\Spy\Queries\ListRandomSpiesQuery;
+use App\Application\Spy\Queries\ListSpiesQuery;
 use App\Domain\Common\Bus\CommandBus;
 use App\Domain\Common\Bus\QueryBus;
 use App\Infrastructure\Laravel\Controller;
 use App\UI\Http\Requests\Spy\CreateSpyRequest;
+use App\UI\Http\Requests\Spy\AllSpiesRequest;
 use Illuminate\Http\JsonResponse;
 
 class SpyController extends Controller
@@ -34,5 +36,17 @@ class SpyController extends Controller
         $response = new SpyCollectionResponse($spies);
 
         return response()->json($response->toArray());
+    }
+
+    public function all(AllSpiesRequest $request): JsonResponse
+    {
+        try {
+            $query = new ListSpiesQuery($request->payload());
+            $spies = $this->queryBus->ask($query);
+
+            return response()->json($spies);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
     }
 }

@@ -11,4 +11,6 @@ interface SpyRepositoryInterface
     public function create(Spy $spy): void;
 
     public function randomEntries(int $count): array;
+
+    public function all(): mixed;
 }

@@ -12,12 +12,7 @@ enum SpyAgency: string
 
     public function label(): SpyAgency
     {
-        return match ($this) {
-            'CIA' => self::CIA,
-            'MI6' => self::MI6,
-            'KGB' => self::KGB,
-            default => throw new \InvalidArgumentException("Invalid spy agency: $this"),
-        };
+        return $this;
     }
 
     public static function values(): array

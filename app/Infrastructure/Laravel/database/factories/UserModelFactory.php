@@ -15,7 +15,7 @@ class UserModelFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      *
-     * @var string
+     * @var class-string<UserModel>
      */
     protected $model = UserModel::class;
 

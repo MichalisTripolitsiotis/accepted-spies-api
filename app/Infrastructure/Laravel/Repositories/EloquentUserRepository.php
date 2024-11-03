@@ -12,6 +12,7 @@ use App\Domain\Auth\ValueObjects\UserName;
 use App\Domain\Auth\ValueObjects\UserPassword;
 use App\Domain\Auth\ValueObjects\UserRememberToken;
 use App\Infrastructure\Laravel\Models\UserModel;
+use Carbon\Carbon;
 
 class EloquentUserRepository implements UserRepositoryInterface
 {
@@ -26,7 +27,7 @@ class EloquentUserRepository implements UserRepositoryInterface
         return new User(
             new UserName($userModel->name),
             new UserEmail($userModel->email),
-            new UserEmailVerifiedDate($userModel->email_verified_at),
+            new UserEmailVerifiedDate($userModel->email_verified_at ? Carbon::parse($userModel->email_verified_at) : null),
             new UserPassword($userModel->password),
             new UserRememberToken($userModel->remember_token)
         );

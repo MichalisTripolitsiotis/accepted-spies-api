@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SpyModel extends Model
 {
-    /** @use HasFactory<\Database\Factories\App\Domain\Spies\SpyFactory> */
+    /** @use HasFactory<SpyModelFactory> */
     use HasFactory;
 
     /**

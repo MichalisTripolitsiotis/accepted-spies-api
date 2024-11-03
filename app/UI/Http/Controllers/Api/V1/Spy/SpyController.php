@@ -12,8 +12,8 @@ use App\Application\Spy\Queries\ListSpiesQuery;
 use App\Domain\Common\Bus\CommandBus;
 use App\Domain\Common\Bus\QueryBus;
 use App\Infrastructure\Laravel\Controller;
-use App\UI\Http\Requests\Spy\CreateSpyRequest;
 use App\UI\Http\Requests\Spy\AllSpiesRequest;
+use App\UI\Http\Requests\Spy\CreateSpyRequest;
 use Illuminate\Http\JsonResponse;
 
 class SpyController extends Controller

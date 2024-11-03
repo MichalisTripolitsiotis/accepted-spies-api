@@ -14,7 +14,7 @@ class SpyModelFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      *
-     * @var string
+     * @var class-string<SpyModel>
      */
     protected $model = SpyModel::class;
 

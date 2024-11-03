@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Unit\Domain\Auth\Repositories;
+namespace Tests\Unit\Domain\Auth\Contracts;
 
 use App\Domain\Auth\Entities\User;
-use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
+use App\Domain\Auth\Contracts\AuthenticationServiceInterface;
 use App\Domain\Auth\ValueObjects\UserPassword;
 use Illuminate\Support\Facades\Hash;
 use Mockery;

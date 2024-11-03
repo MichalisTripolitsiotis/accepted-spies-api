@@ -8,7 +8,7 @@ use App\Domain\Spy\Entities\Spy;
 
 interface SpyRepositoryInterface
 {
-    public function create(Spy $spy): void;
+    public function create(Spy $spy): ?Spy;
 
     public function randomEntries(int $count): array;
 

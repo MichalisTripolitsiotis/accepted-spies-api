@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Auth\Commands;
+namespace App\Application\Auth\Handlers;
 
-use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
+use App\Application\Auth\Commands\LogoutCommand;
+use App\Domain\Auth\Contracts\AuthenticationServiceInterface;
 use App\Domain\Common\Bus\CommandHandler;
 
 class LogoutHandler extends CommandHandler

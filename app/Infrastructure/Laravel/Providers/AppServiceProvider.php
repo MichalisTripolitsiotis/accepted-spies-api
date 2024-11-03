@@ -3,16 +3,16 @@
 namespace App\Infrastructure\Laravel\Providers;
 
 use App\Application\Auth\Commands\LoginCommand;
-use App\Application\Auth\Commands\LoginHandler;
 use App\Application\Auth\Commands\LogoutCommand;
-use App\Application\Auth\Commands\LogoutHandler;
+use App\Application\Auth\Handlers\LoginHandler;
+use App\Application\Auth\Handlers\LogoutHandler;
 use App\Application\Spy\Commands\CreateSpyCommand;
-use App\Application\Spy\Commands\CreateSpyHandler;
-use App\Application\Spy\Queries\ListRandomSpiesHandler;
+use App\Application\Spy\Handlers\CreateSpyHandler;
+use App\Application\Spy\Handlers\ListRandomSpiesHandler;
 use App\Application\Spy\Queries\ListRandomSpiesQuery;
-use App\Application\Spy\Queries\ListSpiesHandler;
+use App\Application\Spy\Handlers\ListSpiesHandler;
 use App\Application\Spy\Queries\ListSpiesQuery;
-use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
+use App\Domain\Auth\Contracts\AuthenticationServiceInterface;
 use App\Domain\Auth\Repositories\UserRepositoryInterface;
 use App\Domain\Common\Bus\CommandBus;
 use App\Domain\Common\Bus\QueryBus;

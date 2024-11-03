@@ -17,7 +17,7 @@ use App\Infrastructure\Laravel\Models\SpyModel;
 
 class EloquentSpyRepository implements SpyRepositoryInterface
 {
-    public function create(Spy $spy): void
+    public function create(Spy $spy): ?Spy
     {
         try {
             $spyModel = SpyModel::create([
@@ -30,6 +30,7 @@ class EloquentSpyRepository implements SpyRepositoryInterface
             ]);
 
             $spy->assignId(new SpyId($spyModel->id));
+            return $spy;
         } catch (\Exception $e) {
             throw $e;
         }

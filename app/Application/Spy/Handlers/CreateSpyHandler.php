@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Spy\Commands;
+namespace App\Application\Spy\Handlers;
 
+use App\Application\Spy\Commands\CreateSpyCommand;
 use App\Domain\Common\Bus\CommandHandler;
 use App\Domain\Common\Events\DomainEventDispatcher;
 use App\Domain\Spy\Entities\Spy;

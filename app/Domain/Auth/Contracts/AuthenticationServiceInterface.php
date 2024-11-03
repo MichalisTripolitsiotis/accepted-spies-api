@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Auth\Repositories;
+namespace App\Domain\Auth\Contracts;
 
 use App\Domain\Auth\Entities\User;
 use App\Domain\Auth\ValueObjects\UserEmail;

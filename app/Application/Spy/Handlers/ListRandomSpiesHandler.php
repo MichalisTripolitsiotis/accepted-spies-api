@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Spy\Queries;
+namespace App\Application\Spy\Handlers;
 
+use App\Application\Spy\Queries\ListRandomSpiesQuery;
 use App\Domain\Common\Bus\QueryHandler;
 use App\Domain\Spy\Repositories\SpyRepositoryInterface;
 

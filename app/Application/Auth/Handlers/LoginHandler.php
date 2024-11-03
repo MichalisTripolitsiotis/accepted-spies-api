@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Auth\Commands;
+namespace App\Application\Auth\Handlers;
 
-use App\Domain\Auth\Repositories\AuthenticationServiceInterface;
-use App\Domain\Auth\ValueObjects\UserEmail;
-use App\Domain\Auth\ValueObjects\UserPassword;
+use App\Application\Auth\Commands\LoginCommand;
+use App\Domain\Auth\Contracts\AuthenticationServiceInterface;
 use App\Domain\Common\Bus\CommandHandler;
 use Illuminate\Auth\AuthenticationException;
 
@@ -16,7 +15,7 @@ class LoginHandler extends CommandHandler
 
     public function handle(LoginCommand $command): string
     {
-        $user = $this->service->attempt(new UserEmail($command->loginData->email), new UserPassword($command->loginData->password));
+        $user = $this->service->attempt($command->loginData->email, $command->loginData->password);
 
         if (! $user) {
             throw new AuthenticationException('The provided credentials are incorrect.');

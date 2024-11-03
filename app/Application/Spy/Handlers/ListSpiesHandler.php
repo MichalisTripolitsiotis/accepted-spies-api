@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Spy\Queries;
+namespace App\Application\Spy\Handlers;
 
+use App\Application\Spy\Queries\ListSpiesQuery;
 use App\Application\Spy\Services\SpyFilterService;
 use App\Domain\Common\Bus\QueryHandler;
 

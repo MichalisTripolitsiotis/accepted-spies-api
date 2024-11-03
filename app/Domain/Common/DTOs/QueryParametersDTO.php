@@ -16,8 +16,8 @@ final class QueryParametersDTO
     public function __construct(
         public SpyFilterValueObject $filters,
         public SpySortValueObject $sorts,
-        public int $page,
-        public int $perPage,
+        public ?int $page = null,
+        public ?int $perPage = null,
     ) {}
 
     public static function make(array $data): QueryParametersDTO

@@ -94,7 +94,7 @@ class ListSpiesTest extends TestCase
         $ageMax = 40;
 
         $response = $this->actingAs($this->user)->getJson(self::API_BASE."spy/all?filters[age_min]={$ageMin}&filters[age_max]={$ageMax}");
-        dd($response->json());
+
         $response->assertStatus(200)
             ->assertJsonCount(2, 'data')
             ->assertJsonFragment(['name' => 'John'])

@@ -42,8 +42,6 @@ class AllSpiesRequest extends FormRequest
 
     /**
      * Prepare the data for validation.
-     *
-     * @return void
      */
     protected function prepareForValidation(): void
     {
@@ -51,8 +49,8 @@ class AllSpiesRequest extends FormRequest
 
         $unsupportedKeys = array_diff(array_keys($this->all()), $allowedKeys);
 
-        if (!empty($unsupportedKeys)) {
-            throw new \InvalidArgumentException('Unsupported parameter(s}: ' . implode(', ', $unsupportedKeys));
+        if (! empty($unsupportedKeys)) {
+            throw new \InvalidArgumentException('Unsupported parameter(s}: '.implode(', ', $unsupportedKeys));
         }
     }
 

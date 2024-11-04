@@ -29,7 +29,7 @@ class CreateSpyTest extends TestCase
             'name' => 'James',
             'surname' => 'Bond',
             'agency' => 'MI6',
-            'country' => 'UK',
+            'country' => 'England',
             'date_of_birth' => '1953-03-18',
             'date_of_death' => null,
         ];
@@ -60,7 +60,7 @@ class CreateSpyTest extends TestCase
             'name' => 'James',
             'surname' => 'Bond',
             'agency' => 'MI6',
-            'country_of_operation' => 'UK',
+            'country_of_operation' => 'England',
             'date_of_birth' => '1953-03-18',
             'date_of_death' => null,
         ]);
@@ -73,7 +73,7 @@ class CreateSpyTest extends TestCase
             'surname' => '',
             'agency' => '',
             'country' => '',
-            'date_of_birth' => 'invalid-date',
+            'date_of_birth' => '',
         ];
 
         $response = $this->actingAs($this->user)->postJson(self::API_BASE.'spy/store', $payload);

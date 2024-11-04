@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Laravel\Database\Factories;
 
 use App\Infrastructure\Laravel\Models\UserModel;

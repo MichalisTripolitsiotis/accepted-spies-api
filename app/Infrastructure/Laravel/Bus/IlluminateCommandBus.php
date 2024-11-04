@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Laravel\Bus;
 
 use App\Domain\Common\Bus\Command;

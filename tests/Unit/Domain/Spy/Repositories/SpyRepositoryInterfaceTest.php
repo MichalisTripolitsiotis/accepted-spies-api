@@ -36,7 +36,7 @@ class SpyRepositoryInterfaceTest extends TestCase
             ->once()
             ->with($spy)
             ->andReturnUsing(function ($spy) {
-                // TODO: I think due to mocking, it doesn't assign id.
+                // TODO: A workaround as I think due to mocking, it doesn't run the assign id function.
                 $spy->assignId(new SpyId(1));
 
                 return $spy;

@@ -4,6 +4,7 @@ namespace Tests\Feature\Application\Spy;
 
 use App\Infrastructure\Laravel\Models\SpyModel;
 use App\Infrastructure\Laravel\Models\UserModel;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -16,6 +17,8 @@ class ListSpiesTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        Carbon::setTestNow('2024-11-04');
 
         $this->user = UserModel::factory()->create();
 
@@ -45,6 +48,13 @@ class ListSpiesTest extends TestCase
             'date_of_birth' => '1953-03-18',
             'date_of_death' => null,
         ]);
+    }
+
+    protected function tearDown(): void
+    {
+        Carbon::setTestNow();
+
+        parent::tearDown();
     }
 
     public function testListSpiesWithoutFiltersOrSorting()

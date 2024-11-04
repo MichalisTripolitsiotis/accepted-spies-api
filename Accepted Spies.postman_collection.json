@@ -1,0 +1,575 @@
+{
+	"info": {
+		"_postman_id": "4f01d7bc-a12a-4f19-aeec-a434445856c8",
+		"name": "Accepted Spies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12647704"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"token\", pm.response.json().auth_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/auth/logout",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/auth/user",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"user"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Spy",
+			"item": [
+				{
+					"name": "Filtering",
+					"item": [
+						{
+							"name": "Spies Filter By Name & Surname",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost/api/v1/spy/all?filters[name]=james&filters[surname]=Bo",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"spy",
+										"all"
+									],
+									"query": [
+										{
+											"key": "filters[name]",
+											"value": "james"
+										},
+										{
+											"key": "filters[surname]",
+											"value": "Bo"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Spies Filter By Exact Age",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost/api/v1/spy/all?filters[exact_age]=71",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"spy",
+										"all"
+									],
+									"query": [
+										{
+											"key": "filters[exact_age]",
+											"value": "71"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Spies Filter By Ranged Age",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost/api/v1/spy/all?filters[age_min]=29&filters[age_max]=69",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"spy",
+										"all"
+									],
+									"query": [
+										{
+											"key": "filters[age_min]",
+											"value": "29"
+										},
+										{
+											"key": "filters[age_max]",
+											"value": "69"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sorting",
+					"item": [
+						{
+							"name": "Spies Sort By Date of Birth",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost/api/v1/spy/all?sorting[date_of_birth]=desc",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"spy",
+										"all"
+									],
+									"query": [
+										{
+											"key": "sorting[date_of_birth]",
+											"value": "desc"
+										},
+										{
+											"key": "per_page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Spies Sort By Date of Death",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost/api/v1/spy/all?sorting[date_of_death]=desc",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"spy",
+										"all"
+									],
+									"query": [
+										{
+											"key": "sorting[date_of_death]",
+											"value": "desc"
+										},
+										{
+											"key": "per_page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Spies Sort By Fullname",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost/api/v1/spy/all?sorting[full_name]=asc",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"spy",
+										"all"
+									],
+									"query": [
+										{
+											"key": "sorting[full_name]",
+											"value": "asc"
+										},
+										{
+											"key": "per_page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Spies Sort Multi-field",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost/api/v1/spy/all?sorting[full_name]=asc&sorting[date_of_birth]=asc",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"v1",
+										"spy",
+										"all"
+									],
+									"query": [
+										{
+											"key": "sorting[full_name]",
+											"value": "asc"
+										},
+										{
+											"key": "sorting[date_of_birth]",
+											"value": "asc"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Spy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "James",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Bond",
+									"type": "text"
+								},
+								{
+									"key": "agency",
+									"value": "MI6",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "England",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "18-03-1953",
+									"type": "text"
+								},
+								{
+									"key": "date_of_death",
+									"value": "20-01-2029",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/api/v1/spy/store",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"spy",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Random Spies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/spy/random",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"spy",
+								"random"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Spies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost/api/v1/spy/all",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"v1",
+								"spy",
+								"all"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

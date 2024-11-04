@@ -23,11 +23,11 @@ Follow the steps below to install and set up the application:
 11. Create a new environment variable called token
 
 ## Things for improvement
-1. The Spy Creation could run in a queue:
+1. The Spy Creation could run in a queue:<br>
 Creating a new `IlluminateQuableCommandBus` that implements `ShouldQueue` and a new `QuableCommandBus` I think could work.
-2. Filtering/Sorting
+2. Filtering/Sorting: <br>
 Currently there is a service to handle the filters/sorting for the spies. This is quite specific, a good approach would be to have something more generic that it could be reused from other entities as well.
-3. Making generic Value Objects:
+3. Making generic Value Objects:<br>
 Instead of having specific value objects for each field, it could be based on the variable type e.g. String, Boolean, Date, DateTime, Int etc.
 4. Improve tests to avoid dependencies on Laravel
 Mainly the feature tests, depend on the Laravel Models. This could change to focus more on testing behavior.

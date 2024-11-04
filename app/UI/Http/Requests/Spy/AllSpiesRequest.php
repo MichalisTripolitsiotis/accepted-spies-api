@@ -41,6 +41,22 @@ class AllSpiesRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation(): void
+    {
+        $allowedKeys = ['filters', 'sorting', 'page', 'per_page'];
+
+        $unsupportedKeys = array_diff(array_keys($this->all()), $allowedKeys);
+
+        if (!empty($unsupportedKeys)) {
+            throw new \InvalidArgumentException('Unsupported parameter(s}: ' . implode(', ', $unsupportedKeys));
+        }
+    }
+
+    /**
      * Transform validated data into QueryParametersDTO.
      */
     public function payload(): QueryParametersDTO

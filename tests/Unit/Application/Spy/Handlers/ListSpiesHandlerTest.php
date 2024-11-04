@@ -8,6 +8,7 @@ use App\Application\Spy\Services\SpyFilterService;
 use App\Domain\Common\DTOs\QueryParametersDTO;
 use App\Domain\Spy\ValueObjects\SpyFilterValueObject;
 use App\Domain\Spy\ValueObjects\SpySortValueObject;
+use Carbon\Carbon;
 use Mockery;
 use Tests\Factories\SpyFactory;
 use Tests\TestCase;
@@ -21,6 +22,8 @@ class ListSpiesHandlerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        Carbon::setTestNow('2024-11-04');
 
         $this->spyService = Mockery::mock(SpyFilterService::class);
 
@@ -55,6 +58,7 @@ class ListSpiesHandlerTest extends TestCase
     protected function tearDown(): void
     {
         Mockery::close();
+        Carbon::setTestNow();
         parent::tearDown();
     }
 

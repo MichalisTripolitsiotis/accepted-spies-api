@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Laravel\Services;
 
-use App\Domain\Auth\Entities\User;
 use App\Domain\Auth\Contracts\AuthenticationServiceInterface;
+use App\Domain\Auth\Entities\User;
 use App\Domain\Auth\Repositories\UserRepositoryInterface;
 use App\Domain\Auth\ValueObjects\UserEmail;
 use App\Domain\Auth\ValueObjects\UserPassword;
@@ -43,6 +43,6 @@ class SanctumAuthenticationService implements AuthenticationServiceInterface
         $userModel = UserModel::where('email', $user->email()->value())->firstOrFail();
         $userModel->tokens()->delete();
 
-        return $userModel->tokens()->get()->isEmpty();
+        return $userModel->tokens->isEmpty();
     }
 }

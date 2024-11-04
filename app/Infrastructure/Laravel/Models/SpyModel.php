@@ -35,8 +35,10 @@ class SpyModel extends Model
     ];
 
     protected $casts = [
-        'date_of_birth' => 'date',
-        'date_of_death' => 'date',
+        'date_of_birth' => 'date:Y-m-d',
+        'date_of_death' => 'date:Y-m-d',
+        'created_at' => 'date:Y-m-d H:m:s',
+        'updated_at' => 'date:Y-m-d H:m:s',
     ];
 
     /**

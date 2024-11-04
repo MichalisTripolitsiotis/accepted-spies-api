@@ -30,6 +30,7 @@ class EloquentSpyRepository implements SpyRepositoryInterface
             ]);
 
             $spy->assignId(new SpyId($spyModel->id));
+
             return $spy;
         } catch (\Exception $e) {
             throw $e;

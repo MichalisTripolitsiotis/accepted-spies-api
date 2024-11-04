@@ -8,7 +8,7 @@ use App\Domain\Common\Events\DomainEvent;
 use App\Domain\Common\Events\DomainEventDispatcher;
 use Illuminate\Contracts\Events\Dispatcher as LaravelDispatcher;
 
-class LaravelEventDispatcher implements DomainEventDispatcher
+class IlluminateEventDispatcher implements DomainEventDispatcher
 {
     private LaravelDispatcher $dispatcher;
 

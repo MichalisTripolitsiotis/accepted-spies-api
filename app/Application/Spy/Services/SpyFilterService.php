@@ -70,12 +70,11 @@ class SpyFilterService
     {
         $query->where(function ($query) use ($startOfBirthYear, $endOfBirthYear, $age) {
             $query->whereNull('date_of_death')
-                ->whereBetween('date_of_birth', [$startOfBirthYear, $endOfBirthYear]);
-
-            $query->orWhere(function ($query) use ($age) {
-                $query->whereNotNull('date_of_death')
-                    ->whereRaw('TIMESTAMPDIFF(YEAR, date_of_birth, date_of_death) = ?', [$age]);
-            });
+                ->whereBetween('date_of_birth', [$startOfBirthYear, $endOfBirthYear])
+                ->orWhere(function ($query) use ($age) {
+                    $query->whereNotNull('date_of_death')
+                        ->whereBetween('date_of_birth', [now()->subYears($age + 1), now()->subYears($age)]);
+                });
         });
     }
 

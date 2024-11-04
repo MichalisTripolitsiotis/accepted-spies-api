@@ -42,10 +42,5 @@ jobs:
       run: ./vendor/bin/phpstan analyse --memory-limit=2G
     - name: Run Code Styling
       run: ./vendor/bin/pint --test
-    - name: Prepare Laravel Environment for MySQL
-      run: |
-        php artisan config:clear
-        php artisan cache:clear
-        php artisan migrate --force
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       run: php artisan test

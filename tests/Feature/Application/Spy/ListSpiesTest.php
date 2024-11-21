@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Application\Spy;
 
+use App\Infrastructure\Laravel\Models\AgencyModel;
 use App\Infrastructure\Laravel\Models\SpyModel;
 use App\Infrastructure\Laravel\Models\UserModel;
 use Carbon\Carbon;
@@ -22,10 +23,12 @@ class ListSpiesTest extends TestCase
 
         $this->user = UserModel::factory()->create();
 
+        $agencyId = AgencyModel::factory()->create()->id;
+
         SpyModel::create([
             'name' => 'John',
             'surname' => 'Doe',
-            'agency' => 'CIA',
+            'agency_id' => $agencyId,
             'country_of_operation' => 'USA',
             'date_of_birth' => '1985-01-01',
             'date_of_death' => null,
@@ -34,7 +37,7 @@ class ListSpiesTest extends TestCase
         SpyModel::create([
             'name' => 'Jane',
             'surname' => 'Smith',
-            'agency' => 'MI6',
+            'agency_id' => $agencyId,
             'country_of_operation' => 'England',
             'date_of_birth' => '1990-05-15',
             'date_of_death' => '2022-05-15',
@@ -43,7 +46,7 @@ class ListSpiesTest extends TestCase
         SpyModel::create([
             'name' => 'James',
             'surname' => 'Bond',
-            'agency' => 'MI6',
+            'agency_id' => $agencyId,
             'country_of_operation' => 'England',
             'date_of_birth' => '1953-03-18',
             'date_of_death' => null,

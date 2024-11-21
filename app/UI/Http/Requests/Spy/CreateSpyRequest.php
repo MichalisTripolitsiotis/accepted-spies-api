@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\UI\Http\Requests\Spy;
 
 use App\Application\Spy\DTOs\CreateSpyData;
-use App\Domain\Spy\ValueObjects\SpyAgency;
 use App\Infrastructure\Laravel\Models\SpyModel;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class CreateSpyRequest extends FormRequest
 {
@@ -39,10 +37,9 @@ class CreateSpyRequest extends FormRequest
                 'max:255',
                 $this->uniqueNameSurnameRule(),
             ],
-            'agency' => [
+            'agency_id' => [
                 'required',
-                'string',
-                Rule::in(SpyAgency::values()),
+                'exists:agencies,id',
             ],
             'country' => [
                 'required',

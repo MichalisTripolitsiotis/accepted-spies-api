@@ -31,7 +31,6 @@ class ListSpiesHandlerTest extends TestCase
             SpyFactory::create([
                 'name' => 'John',
                 'surname' => 'Doe',
-                'agency' => 'CIA',
                 'country_of_operation' => 'USA',
                 'date_of_birth' => '1985-01-01',
             ]),
@@ -39,7 +38,6 @@ class ListSpiesHandlerTest extends TestCase
             SpyFactory::create([
                 'name' => 'Jane',
                 'surname' => 'Smith',
-                'agency' => 'MI6',
                 'country_of_operation' => 'England',
                 'date_of_birth' => '1990-05-15',
                 'date_of_death' => '2022-05-15',
@@ -48,7 +46,6 @@ class ListSpiesHandlerTest extends TestCase
             SpyFactory::create([
                 'name' => 'James',
                 'surname' => 'Bond',
-                'agency' => 'MI6',
                 'country_of_operation' => 'England',
                 'date_of_birth' => '1953-03-18',
             ]),

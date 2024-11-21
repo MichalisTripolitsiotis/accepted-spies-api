@@ -11,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('spies', function (Blueprint $table) {
+        Schema::create('agencies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('agency_id')->constrained('agencies')->cascadeOnDelete();
             $table->string('name');
-            $table->string('surname');
-            $table->string('country_of_operation');
-            $table->date('date_of_birth');
-            $table->date('date_of_death')->nullable();
             $table->timestamps();
 
-            $table->unique(['name', 'surname']);
+            $table->unique(['name']);
         });
     }
 
@@ -30,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('spies');
+        Schema::dropIfExists('agencies');
     }
 };

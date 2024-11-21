@@ -4,6 +4,7 @@ namespace Tests\Feature\Domain\Spy\Repositories;
 
 use App\Domain\Spy\Entities\Spy;
 use App\Domain\Spy\Repositories\SpyRepositoryInterface;
+use App\Infrastructure\Laravel\Models\AgencyModel;
 use App\Infrastructure\Laravel\Models\SpyModel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Factories\SpyFactory;
@@ -23,10 +24,15 @@ class SpyRepositoryInterfaceTest extends TestCase
 
     public function testCreateMethodCreatesSpyInDatabase(): void
     {
+        $agency = AgencyModel::factory()->create();
+
         $spy = SpyFactory::create([
             'name' => 'Peter',
             'surname' => 'Doe',
-            'agency' => 'KGB',
+            'agency' => [
+                'name' => $agency->name,
+                'id' => $agency->id,
+            ],
             'country_of_operation' => 'Poland',
             'date_of_birth' => '1984-03-02',
         ]);
@@ -36,7 +42,6 @@ class SpyRepositoryInterfaceTest extends TestCase
         $this->assertDatabaseHas('spies', [
             'name' => 'Peter',
             'surname' => 'Doe',
-            'agency' => 'KGB',
             'country_of_operation' => 'Poland',
             'date_of_birth' => '1984-03-02',
             'date_of_death' => null,

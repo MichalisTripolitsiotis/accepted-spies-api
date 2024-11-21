@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Laravel\Models;
 
-use App\Infrastructure\Laravel\Database\Factories\SpyModelFactory;
+use App\Infrastructure\Laravel\Database\Factories\AgencyModelFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class SpyModel extends Model
+class AgencyModel extends Model
 {
-    /** @use HasFactory<SpyModelFactory> */
+    /** @use HasFactory<AgencyModelFactory> */
     use HasFactory;
 
     /**
@@ -19,7 +19,7 @@ class SpyModel extends Model
      *
      * @var string
      */
-    protected $table = 'spies';
+    protected $table = 'agencies';
 
     /**
      * The attributes that are mass assignable.
@@ -28,16 +28,9 @@ class SpyModel extends Model
      */
     protected $fillable = [
         'name',
-        'surname',
-        'agency_id',
-        'country_of_operation',
-        'date_of_birth',
-        'date_of_death',
     ];
 
     protected $casts = [
-        'date_of_birth' => 'date:Y-m-d',
-        'date_of_death' => 'date:Y-m-d',
         'created_at' => 'date:Y-m-d H:m:s',
         'updated_at' => 'date:Y-m-d H:m:s',
     ];
@@ -47,11 +40,11 @@ class SpyModel extends Model
      */
     protected static function newFactory()
     {
-        return SpyModelFactory::new();
+        return AgencyModelFactory::new();
     }
 
-    public function agency(): BelongsTo
+    public function spies(): HasMany
     {
-        return $this->belongsTo(AgencyModel::class);
+        return $this->hasMany(SpyModel::class, 'agency_id');
     }
 }

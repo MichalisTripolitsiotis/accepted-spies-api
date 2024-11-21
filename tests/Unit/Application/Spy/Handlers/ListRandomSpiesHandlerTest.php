@@ -24,7 +24,6 @@ class ListRandomSpiesHandlerTest extends TestCase
         $spy1 = SpyFactory::create([
             'name' => 'James',
             'surname' => 'Bond',
-            'agency' => 'MI6',
             'country_of_operation' => 'England',
             'date_of_birth' => '1953-03-18',
         ]);
@@ -32,7 +31,6 @@ class ListRandomSpiesHandlerTest extends TestCase
         $spy2 = SpyFactory::create([
             'name' => 'Natasha',
             'surname' => 'Romanoff',
-            'agency' => 'KGB',
             'country_of_operation' => 'Russia',
             'date_of_birth' => '1984-11-22',
         ]);

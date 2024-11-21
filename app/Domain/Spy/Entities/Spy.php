@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Spy\Entities;
 
-use App\Domain\Spy\ValueObjects\SpyAgency;
+use App\Domain\Agency\Entities\Agency;
 use App\Domain\Spy\ValueObjects\SpyCountryOfOperation;
 use App\Domain\Spy\ValueObjects\SpyDateOfBirth;
 use App\Domain\Spy\ValueObjects\SpyDateOfDeath;
@@ -17,7 +17,7 @@ final class Spy
     public function __construct(
         private SpyName $name,
         private SpySurname $surname,
-        private SpyAgency $agency,
+        private Agency $agency,
         private SpyCountryOfOperation $country,
         private SpyDateOfBirth $dateOfBirth,
         private ?SpyDateOfDeath $dateOfDeath = null,
@@ -29,7 +29,7 @@ final class Spy
         $this->id = $id;
     }
 
-    public function id(): SpyId
+    public function id(): ?SpyId
     {
         return $this->id;
     }
@@ -44,7 +44,7 @@ final class Spy
         return $this->surname;
     }
 
-    public function agency(): SpyAgency
+    public function agency(): Agency
     {
         return $this->agency;
     }
@@ -67,7 +67,7 @@ final class Spy
     public static function create(
         SpyName $name,
         SpySurname $surname,
-        SpyAgency $agency,
+        Agency $agency,
         SpyCountryOfOperation $countryOfOperation,
         SpyDateOfBirth $dateOfBirth,
         ?SpyDateOfDeath $dateOfDeath = null

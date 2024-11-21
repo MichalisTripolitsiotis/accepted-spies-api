@@ -20,6 +20,10 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('api/v1')
                 ->name('spy.')
                 ->group(base_path('routes/spy.php'));
+            Route::namespace('Agency')
+                ->prefix('api/v1')
+                ->name('agency.')
+                ->group(base_path('routes/agency.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {

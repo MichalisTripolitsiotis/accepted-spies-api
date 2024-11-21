@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Laravel\Database\Factories;
 
-use App\Domain\Spy\ValueObjects\SpyAgency;
+use App\Infrastructure\Laravel\Models\AgencyModel;
 use App\Infrastructure\Laravel\Models\SpyModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -32,7 +32,7 @@ class SpyModelFactory extends Factory
         return [
             'name' => fake()->firstName(),
             'surname' => fake()->lastName(),
-            'agency' => fake()->randomElement(SpyAgency::cases()),
+            'agency_id' => AgencyModel::inRandomOrder()->first()->id ?? AgencyModel::factory()->create()->id,
             'country_of_operation' => fake()->country(),
             'date_of_birth' => $birthDate,
             'date_of_death' => fake()->boolean() ? fake()->dateTimeBetween($birthDate) : null,
